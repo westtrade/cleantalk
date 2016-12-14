@@ -1,0 +1,12 @@
+{
+  "name": "cleantalk",
+  "version": "1.0.0",
+  "description": "API for antispam service cleantalk.org. Invisible protection from spam, no captches, no puzzles, no animals and no math.",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/westtrade/cleantalk.git",
+    "type": "git"
+  },
+  "author": "Popov Gennadiy <me@westtrade.tk>",
+  "license": "MIT"
+}
