@@ -2,11 +2,20 @@
   "name": "cleantalk",
   "version": "1.0.0",
   "description": "API for antispam service cleantalk.org. Invisible protection from spam, no captches, no puzzles, no animals and no math.",
-  "main": "index.js",
+  "main": "src/Cleantalk.js",
   "repository": {
     "url": "https://github.com/westtrade/cleantalk.git",
     "type": "git"
   },
+  "scripts": {
+    "test": "ava"
+  },
   "author": "Popov Gennadiy <me@westtrade.tk>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.17.0"
+  },
+  "dependencies": {
+    "iconv": "^2.2.1"
+  }
 }
