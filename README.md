@@ -7,13 +7,13 @@ Nodejs API for antispam service [cleantalk.org](https://cleantalk.org). Invisibl
 - [Install](#install)
 - [Use](#use)
 - [API](#api)
+- [TODO](#todo)
 
 ### Contributors
 - [westtrade](https://github.com/westtrade)
 - [ChivPoint](https://github.com/ChivPoint)
 
 <a name="requirements"></a>
-
 # Requirements
 - node.js > 7.x.x
 - npm or yarn
@@ -28,7 +28,6 @@ npm update npm -g
 ```
 
 <a name="install"></a>
-
 # Install
 
 ## yarn
@@ -42,9 +41,11 @@ npm install cleantalk
 ```
 
 <a name="use"></a>
-
 # Use
 
 <a name="api"></a>
-
 # API
+
+<a name="todo"></a>
+# TODO
+1. Meteor support
