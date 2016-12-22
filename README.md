@@ -48,4 +48,4 @@ npm install cleantalk
 
 <a name="todo"></a>
 # TODO
-1. Meteor support
+- [] Meteor support
