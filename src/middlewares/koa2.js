@@ -58,11 +58,11 @@ const assert = require('assert');
 			? 'isAllowMessage'
 			: 'isAllowUser';
 
-		const ctRequest = new CleantalkRequest({options, aliases, request});
+		const ctRequest = new CleantalkRequest({options, aliases, ctx.req});
 		ctx.spam = await client[method](ctRequest);
 		return next();
 	};
-}
+};
 
 
 
