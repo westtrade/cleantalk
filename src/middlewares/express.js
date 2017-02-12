@@ -67,6 +67,6 @@ const cleantalkMiddleware = (auth_key, type, aliases, options) =>  {
 			})
 			.catch(error => next(error));
 	};
-}
+};
 
 module.exports = cleantalkMiddleware;
