@@ -1,6 +1,8 @@
 # Cleantalk Node.js API
 
-Node.js API for antispam service [cleantalk.org](https://cleantalk.org). Invisible protection from spam, no captches, no puzzles, no animals and no math.
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4dbca2bd44654b4791544b6756fedade)](https://www.codacy.com/app/westtrade/cleantalk?utm_source=github.com&utm_medium=referral&utm_content=westtrade/cleantalk&utm_campaign=badger)
+
+Nodejs API for antispam service [cleantalk.org](https://cleantalk.org). Invisible protection from spam, no captches, no puzzles, no animals and no math.
 
 ## Contents
 - [Requirements](#requirements)
