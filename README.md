@@ -1,4 +1,4 @@
-# Cleantalk Nodejs API
+# Cleantalk Node.js API
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4dbca2bd44654b4791544b6756fedade)](https://www.codacy.com/app/westtrade/cleantalk?utm_source=github.com&utm_medium=referral&utm_content=westtrade/cleantalk&utm_campaign=badger)
 
