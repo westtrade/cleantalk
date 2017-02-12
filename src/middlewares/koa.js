@@ -59,11 +59,11 @@ const assert = require('assert');
 			? 'isAllowMessage'
 			: 'isAllowUser';
 
-		const ctRequest = new CleantalkRequest({options, aliases, request});
+		const ctRequest = new CleantalkRequest({options, aliases, this.req});
 		this.spam = yield client[method](ctRequest);
 		yield next;
 	};
-}
+};
 
 
 module.exports = cleantalkMiddleware;
