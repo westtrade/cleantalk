@@ -5,7 +5,7 @@
 * @Date:   2016-12-17T18:19:23+03:00
 * @Email:  me@westtrade.tk
 * @Last modified by:   dio
-* @Last modified time: 2016-12-20T00:44:21+03:00
+* @Last modified time: 2017-03-21T06:11:36+03:00
 */
 
 const zlib = require('zlib');
@@ -49,6 +49,7 @@ class CleantalkRequest {
   * Options.options.sendHeaders - automatic parse and send headers of request
   * Options.options.excludeHeaders - List of excluded headers
   * Options.options.bodyType - Body parser type - maybe json or querystring
+  * Options.options.language - Language is alias for
   *
   * @param {object}   Options.aliases List of aliases
   * Explanation:
@@ -61,8 +62,7 @@ class CleantalkRequest {
   * @param {IncomingMessage}
   *
   */
-	constructor({data, options, aliases, request}) {
-
+	constructor({data, options, aliases, request, language = 'en'} = {}) {
 		if (request) {
 			assert(request instanceof IncomingMessage, 'Request argument must be instance of http.ClientRequest.');
 		}
@@ -88,7 +88,7 @@ class CleantalkRequest {
 			assert.equal(typeof aliases, 'object', 'Aliases must be an object.');
 		}
 
-		assert(ALLOWED_BODY_TYPES.includes(bodyType), `options.bodyType must be in list of allowed types ${ALLOWED_BODY_TYPES.join(', ')}`)
+		assert(ALLOWED_BODY_TYPES.includes(bodyType), `options.bodyType must be in list of allowed types ${ALLOWED_BODY_TYPES.join(', ')}`);
 
 		if (!this.all_headers && sendHeaders) {
 
@@ -124,7 +124,7 @@ class CleantalkRequest {
 			if (request.headers['x-ucbrowser-ua']) {  //special case of UC Browser
 				post_info['USER_AGENT'] = request.headers['x-ucbrowser-ua'];
 			}
-			
+
 			data.post_info = post_info;
 		}
 
@@ -133,7 +133,7 @@ class CleantalkRequest {
 		data['sender_ip'] = sender_info['remote_addr'];
 
 
-		let {pathname, query: queryRaw} = url.parse(request.url);
+		let {query: queryRaw} = url.parse(request.url);
 
 		const ready = this[parseBody](request, bodyType)
 			.then((body = {}) => {
@@ -163,7 +163,6 @@ class CleantalkRequest {
 		this[privateKey] = {
 			ready,
 		};
-
 	}
 
 	get ready() {
@@ -193,7 +192,7 @@ class CleantalkRequest {
 
 			let body = '';
 
-			stream.on('data', (chunk) => { body += chunk.toString('utf-8') });
+			stream.on('data', (chunk) => { body += chunk.toString('utf-8'); });
 			stream.on('end', () => {
 
 				let data = {};

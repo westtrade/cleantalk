@@ -5,7 +5,7 @@
 * @Date:   2016-12-15T17:23:48+03:00
 * @Email:  me@westtrade.tk
 * @Last modified by:   dio
-* @Last modified time: 2016-12-20T00:52:15+03:00
+* @Last modified time: 2017-03-21T05:46:15+03:00
 */
 
 const http = require('http');
@@ -22,7 +22,7 @@ const CleantalkResponse = require('./CleantalkResponse');
 const CleantalkError = require('./CleantalkError');
 const CleantalkRequest = require('./CleantalkRequest');
 
-const {Iconv} = require('iconv');
+const iconv = require('iconv-lite');
 const {flatten} = require('./util');
 
 const ALLOWED_METHOD_NAMES = ['check_message', 'check_newuser', 'check', 'send_feedback', 'backlinks_check'];
@@ -38,7 +38,7 @@ const requestMethod = Symbol('Request method');
 /**
  * Cleantalk - remote API wrapper class
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author Popov Gennadiy (me@westtrade.tk)
  * @copyright (C) 2016 Popov Gennadiy (me@westtrade.tk)
  * @license MIT: {@link https://mit-license.org/}
@@ -62,6 +62,16 @@ class Cleantalk {
 	 */
 	get language() {
 		return this[privateProperties].language || 'en';
+	}
+
+	/**
+	 * language - Setter for language property
+	 * @param  {String} language Language of suggestion returned in response
+	 */
+	set language(language) {
+		language = language || 'en';
+		// assert(ALLOWED_LANGS.includes(language), `Language must be included in allowed languages: ${ALLOWED_LANGS.join(', ')}.`);
+		this[privateProperties].language = language;
 	}
 
 	/**
@@ -97,13 +107,13 @@ class Cleantalk {
 	 * @param {String} Options.language   Language may be 'ru' or 'en'
 	 *
 	 */
-	 constructor({auth_key, server_url, language}) {
+	 constructor({auth_key, server_url, language} = {}) {
 
 		assert(auth_key, 'Authentication key ($auth_key) must be defined.');
 		assert.equal(typeof auth_key, 'string', 'Auth key must be a string.');
 
 		language = language || 'en';
-		assert(ALLOWED_LANGS.includes(language), `Language must be included in allowed languages: ${ALLOWED_LANGS.join(', ')}.`);
+		// assert(ALLOWED_LANGS.includes(language), `Language must be included in allowed languages: ${ALLOWED_LANGS.join(', ')}.`);
 
 		server_url = server_url || MODERATOR_API_URL;
 
@@ -182,7 +192,7 @@ class Cleantalk {
 	 *
 	 * @return {CleantalkResponse} Promised object with result of request
 	 */
-	checkNewUser({sender_email, sender_ip, js_on, submit_time, all_headers, sender_nickname, sender_info, tz, phone}) {
+	checkNewUser({sender_email, sender_ip, js_on, submit_time, all_headers, sender_nickname, sender_info, tz, phone} = {}) {
 
 		assert(sender_email, 'Sender email argument (sender_email) is required.');
 		assert.equal(typeof sender_email, 'string', 'Sender email argument must be a string.');
@@ -265,7 +275,7 @@ class Cleantalk {
 	 *
 	 * @return {CleantalkResponse} Promised object with result of request
 	 */
-	checkMessage({sender_email, sender_ip, js_on, submit_time, all_headers, sender_nickname, message, sender_info, post_info, stoplist_check}) {
+	checkMessage({sender_email, sender_ip, js_on, submit_time, all_headers, sender_nickname, message, sender_info, post_info, stoplist_check} = {}) {
 
 		assert(sender_email, 'Sender email argument (sender_email) is required.');
 		assert.equal(typeof sender_email, 'string', 'Sender email argument must be a string.');
@@ -506,7 +516,7 @@ class Cleantalk {
 
 				res.on('end', () => {
 
-					const converter = new Iconv('UTF-8', 'ISO-8859-1');
+					// const converter = new Iconv('UTF-8', 'ISO-8859-1');
 
 					try {
 
@@ -514,9 +524,8 @@ class Cleantalk {
 						const result = Object.keys(data)
 							.reduce((result, currentKey) => {
 								result[currentKey] = typeof data[currentKey] === 'string'
-									? converter.convert(data[currentKey]).toString('UTF-8')
+									? iconv.encode(data[currentKey], 'ISO-8859-1').toString('UTF-8')
 									: data[currentKey];
-
 								return result;
 							}, {});
 

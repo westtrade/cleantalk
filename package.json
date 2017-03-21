@@ -1,6 +1,6 @@
 {
   "name": "cleantalk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API for antispam service cleantalk.org. Invisible protection from spam, no captches, no puzzles, no animals and no math.",
   "main": "src/Cleantalk.js",
   "repository": {
@@ -16,6 +16,6 @@
     "ava": "^0.17.0"
   },
   "dependencies": {
-    "iconv": "^2.2.1"
+    "iconv-lite": "^0.4.15"
   }
 }

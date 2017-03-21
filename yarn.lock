@@ -1468,11 +1468,9 @@ http-signature@~1.1.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-iconv:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/iconv/-/iconv-2.2.1.tgz#39b13fdd98987d26aef26c0a2f2a900911fa4584"
-  dependencies:
-    nan "^2.3.5"
+iconv-lite:
+  version "0.4.15"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
 
 ignore-by-default@^1.0.0, ignore-by-default@^1.0.1:
   version "1.0.1"
@@ -1900,7 +1898,7 @@ multimatch@^2.1.0:
     arrify "^1.0.0"
     minimatch "^3.0.0"
 
-nan@^2.3.0, nan@^2.3.5:
+nan@^2.3.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.4.0.tgz#fb3c59d45fe4effe215f0b890f8adf6eb32d2232"
 
