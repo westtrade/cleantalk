@@ -8,7 +8,7 @@
 *
 *
 * @Last modified by:   dio
-* @Last modified time: 2017-03-21T08:45:37+03:00
+* @Last modified time: 2017-03-21T09:09:02+03:00
 */
 
 const environment = process.env.NODE_ENV || 'development';
@@ -22,7 +22,6 @@ const fs = require('fs');
 
 const CleantalkRequest = require('../src/CleantalkRequest');
 const Cleantalk = require('../');
-
 
 const log = (...args) => console.log(...args);
 const formTemplate = ({errors, data}) => {
@@ -98,7 +97,7 @@ const session = {errors: [], data: {}};
 const server = http.createServer((request, res) => {
 
 	const {pathname, query} = url.parse(request.url);
-	console.log('PATH', pathname);
+	log('PATH', pathname);
 	switch (true) {
 
 	case pathname === '/' && request.method === 'GET':
@@ -170,10 +169,14 @@ const server = http.createServer((request, res) => {
 		}
 
 		break;
-		
+
 	default:
 		res.writeHead(404, {'Content-Type': 'text/html'});
 		res.end('<h1>Not found</h1>');
 	}
 
-}).listen(9081, 'localhost', () => log(`Started at: http://${server.address().address}:${server.address().port}/`));
+}).listen(9081, () => log(`Started at: http://${server.address().address}:${server.address().port}/`));
+
+process.on('SIGINT', function() {
+	process.exit();
+});
