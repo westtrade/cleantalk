@@ -8,7 +8,7 @@
 *
 *
 * @Last modified by:   dio
-* @Last modified time: 2017-03-21T09:09:02+03:00
+* @Last modified time: 2017-03-21T09:18:55+03:00
 */
 
 const environment = process.env.NODE_ENV || 'development';
@@ -95,7 +95,6 @@ const parseForm = req => new Promise(resolve => {
 const session = {errors: [], data: {}};
 
 const server = http.createServer((request, res) => {
-
 	const {pathname, query} = url.parse(request.url);
 	log('PATH', pathname);
 	switch (true) {
