@@ -8,7 +8,7 @@
 *
 *
 * @Last modified by:   dio
-* @Last modified time: 2017-03-21T09:18:55+03:00
+* @Last modified time: 2017-03-30T13:10:43+03:00
 */
 
 const environment = process.env.NODE_ENV || 'development';
@@ -22,6 +22,19 @@ const fs = require('fs');
 
 const CleantalkRequest = require('../src/CleantalkRequest');
 const Cleantalk = require('../');
+
+const {networkInterfaces} = require('os');
+
+const getIps = () => {
+	const ifaces = networkInterfaces();
+	return Object.keys(ifaces).reduce((results = [], ifname) => {
+		const localResults = ifaces[ifname].filter((iface) => {
+			return 'IPv4' === iface.family && !iface.internal;
+		}).map((iface) => iface.address);
+
+		return results.concat(localResults);
+	}, []);
+};
 
 const log = (...args) => console.log(...args);
 const formTemplate = ({errors, data}) => {
@@ -58,12 +71,11 @@ const formTemplate = ({errors, data}) => {
 
 			${auth_key ? '' : `
 				<div class="alert alert-info">
-					Before you can start you need to set up your auth key.
+					<strong>Before you can start you need to set up your auth key (Get there <a target="_blank" href="https://cleantalk.org/my">https://cleantalk.org/my</a>).</strong>
 				</div>
 				<div class="form-group">
 					<label for="auth_key">Auth key</label>
 					<input type="input" class="form-control" name="auth_key" value="${ data.auth_key || '' }"><br>
-					<div class="help-block">If you don't have auth key (Access key), you can get it <a target="_blank" href="https://cleantalk.org/my">there</a></div>
 				</div>
 			`}
 
@@ -79,9 +91,12 @@ const formTemplate = ({errors, data}) => {
 			`}
 			</div>
 			<div class="panel-footer clearfix">
-				<input class="btn btn-success pull-right" value="${ !auth_key ? 'Get key' : 'Check message' }" type="submit">
+				<input class="btn btn-success pull-right" value="${ !auth_key ? 'Set key' : 'Check message' }" type="submit">
 			</div>
 		</form>
+		<h3>Cleantalk last news</h3>
+		<a class="twitter-timeline" data-height="407" data-dnt="true" data-theme="light" href="https://twitter.com/cleantalk_en">Tweets by cleantalk_en</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 	</div>
 </div></div></body></html>`;
 };
@@ -174,7 +189,8 @@ const server = http.createServer((request, res) => {
 		res.end('<h1>Not found</h1>');
 	}
 
-}).listen(9081, () => log(`Started at: http://${server.address().address}:${server.address().port}/`));
+}).listen(9081, () => log(`Started at:
+${ getIps().map((ip) => `http://${ip}:${server.address().port}/`).join(' \n') }`));
 
 process.on('SIGINT', function() {
 	process.exit();
