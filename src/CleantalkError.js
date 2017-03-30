@@ -5,7 +5,7 @@
 * @Date:   2016-12-16T18:22:12+03:00
 * @Email:  me@westtrade.tk
 * @Last modified by:   dio
-* @Last modified time: 2016-12-17T22:15:54+03:00
+* @Last modified time: 2017-03-30T13:36:00+03:00
 */
 
 class CleantalkError extends Error {
@@ -18,7 +18,7 @@ class CleantalkError extends Error {
 		code = parseInt(code);
 		if (isNaN(code)) {
 			code = -1; //Wrong code number
-		};
+		}
 
 		if (typeof Error.captureStackTrace === 'function') {
 			Error.captureStackTrace(this, this.constructor);

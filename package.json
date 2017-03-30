@@ -8,13 +8,15 @@
     "type": "git"
   },
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+	"update:docs": "jsdox --output ./docs ./src"
   },
   "author": "Popov Gennadiy <me@westtrade.tk>",
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.17.0",
     "express": "^4.15.2",
+    "jsdox": "^0.4.10",
     "koa": "^2.2.0"
   },
   "dependencies": {

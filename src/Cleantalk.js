@@ -5,7 +5,7 @@
 * @Date:   2016-12-15T17:23:48+03:00
 * @Email:  me@westtrade.tk
 * @Last modified by:   dio
-* @Last modified time: 2017-03-21T05:46:15+03:00
+* @Last modified time: 2017-03-30T13:36:37+03:00
 */
 
 const http = require('http');
@@ -26,7 +26,7 @@ const iconv = require('iconv-lite');
 const {flatten} = require('./util');
 
 const ALLOWED_METHOD_NAMES = ['check_message', 'check_newuser', 'check', 'send_feedback', 'backlinks_check'];
-const ALLOWED_LANGS = ['en', 'ru'];
+// const ALLOWED_LANGS = ['en', 'ru'];
 
 const MODERATOR_API_URL = 'https://moderate.cleantalk.org/api2.0';
 const SERVICE_API_URL = 'https://api.cleantalk.org/';
@@ -107,7 +107,7 @@ class Cleantalk {
 	 * @param {String} Options.language   Language may be 'ru' or 'en'
 	 *
 	 */
-	 constructor({auth_key, server_url, language} = {}) {
+	constructor({auth_key, server_url, language} = {}) {
 
 		assert(auth_key, 'Authentication key ($auth_key) must be defined.');
 		assert.equal(typeof auth_key, 'string', 'Auth key must be a string.');

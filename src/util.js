@@ -5,12 +5,12 @@
 * @Date:   2016-12-16T02:13:21+03:00
 * @Email:  me@westtrade.tk
 * @Last modified by:   dio
-* @Last modified time: 2016-12-19T23:58:05+03:00
+* @Last modified time: 2017-03-30T13:35:38+03:00
 */
 
-const assert = require('assert');
+// const assert = require('assert');
 const split = dotPath => dotPath
-	.replace('\\.', '--||--').split('.').map(chunk => chunk.replace('--||--', '.'))
+	.replace('\\.', '--||--').split('.').map(chunk => chunk.replace('--||--', '.'));
 
 
 const getFromPath = (ctx = {}, dotPath, defaultValue) => {
@@ -37,7 +37,7 @@ function flatten(source) {
 	while (count--) {
 		Array.isArray(source[count])
 			? result.push(...flatten(source[count]))
-			: result.push(source[count])
+			: result.push(source[count]);
 	}
 
 	return result;

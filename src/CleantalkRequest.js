@@ -5,7 +5,7 @@
 * @Date:   2016-12-17T18:19:23+03:00
 * @Email:  me@westtrade.tk
 * @Last modified by:   dio
-* @Last modified time: 2017-03-21T06:11:36+03:00
+* @Last modified time: 2017-03-30T13:35:54+03:00
 */
 
 const zlib = require('zlib');
@@ -62,7 +62,7 @@ class CleantalkRequest {
   * @param {IncomingMessage}
   *
   */
-	constructor({data, options, aliases, request, language = 'en'} = {}) {
+	constructor({data, options, aliases, request} = {}) {
 		if (request) {
 			assert(request instanceof IncomingMessage, 'Request argument must be instance of http.ClientRequest.');
 		}
