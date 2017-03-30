@@ -18,7 +18,7 @@ constructor - Constructor method for Cleantalk API class
 ## Class: Cleantalk
 constructor - Constructor method for Cleantalk API class
 
-### Cleantalk.isAllowMessage(request) 
+### Cleantalk.isAllowMessage(request)
 
 isAllowMessage - High level function - check whether it is possible to post new message
 
@@ -28,7 +28,7 @@ isAllowMessage - High level function - check whether it is possible to post new 
 
 **Returns**: `CleantalkResponse`, Description
 
-### Cleantalk.isAllowUser(request) 
+### Cleantalk.isAllowUser(request)
 
 isAllowUser - High level function - check whether it is possible to register new user
 
@@ -38,7 +38,7 @@ isAllowUser - High level function - check whether it is possible to register new
 
 **Returns**: `CleantalkResponse`, Description
 
-### Cleantalk.checkNewUser(Options) 
+### Cleantalk.checkNewUser(Options)
 
 checkNewUser - Low level function - checks whether it is possible to register new user
 
@@ -77,7 +77,7 @@ Status:
 
 **Returns**: `CleantalkResponse`, Promised object with result of request
 
-### Cleantalk.checkMessage(Options) 
+### Cleantalk.checkMessage(Options)
 
 checkMessage - Function checks whether it is possible to publish the message
 
@@ -119,7 +119,7 @@ message via stop-words list (1 or 0) (should be enabled in account);
 
 **Returns**: `CleantalkResponse`, Promised object with result of request
 
-### Cleantalk.ipInfo(ipList) 
+### Cleantalk.ipInfo(ipList)
 
 ipInfo - The API method ip_info() returns a 2 letter country code
 (US, UK, CN and etc) for an IP address. You can specify a list
@@ -131,7 +131,7 @@ for IP address to find countries for each IP address by one API call.
 
 **Returns**: `Object`, Promised result object, e.g. {"data":{"8.8.8.8":{"country_code":"US","country_name":"United States"}}}
 
-### Cleantalk.sendFeedback(requestList) 
+### Cleantalk.sendFeedback(requestList)
 
 sendFeedback - This method should be used only for moderator feedbacks.
 	It doesn't check spam. It sends back result of manual moderation.
@@ -145,7 +145,7 @@ e.g. <request_id1>:<0|1>
 where received - number of received request IDs and comment
 - server answer, normally 'Ok'
 
-### Cleantalk.spamCheck(addressList) 
+### Cleantalk.spamCheck(addressList)
 
 spamCheck - This method should be used only for mass check IPs, emails
 for spam activity
@@ -166,7 +166,7 @@ spam_rate - a rating of spam activity from 0 to 100%. 100 means certain spam.
 frequency - is a number of web-sites that reported about spam activity
 of the record. It can be from 0 up to 9999.
 
-### Cleantalk.backlinksCheck(domains) 
+### Cleantalk.backlinksCheck(domains)
 
 backlinksCheck - This method should be used only for mass backlinks
 check for a domain list
@@ -185,7 +185,7 @@ appears - marker which defines record existence in the database 0|1.
 frequency - counts websites with backlinks in the record.
 updated - last time a backlink was found.
 
-### Cleantalk.sendRequest(method, data) 
+### Cleantalk.sendRequest(method, data)
 
 sendRequest - Publi method for promisified request to moderator Cleantalk API
 
@@ -197,7 +197,7 @@ sendRequest - Publi method for promisified request to moderator Cleantalk API
 
 **Returns**: `CleantalkResponse`, Promised result of request
 
-### Cleantalk.requestMethod(requestUrl, data) 
+### Cleantalk.requestMethod(requestUrl, data)
 
 requestMethod - Private method for creating promisified requests to API server
 
@@ -212,13 +212,3 @@ requestMethod - Private method for creating promisified requests to API server
 
 
 * * *
-
-
-
-
-
-
-
-
-
-
