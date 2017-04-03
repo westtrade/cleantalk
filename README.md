@@ -2,6 +2,7 @@
 
 [![NPM](https://nodei.co/npm/cleantalk.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/cleantalk/)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4dbca2bd44654b4791544b6756fedade)](https://www.codacy.com/app/westtrade/cleantalk?utm_source=github.com&utm_medium=referral&utm_content=westtrade/cleantalk&utm_campaign=badger)
+[![Code Climate](https://codeclimate.com/github/westtrade/cleantalk/badges/gpa.svg)](https://codeclimate.com/github/westtrade/cleantalk)
 
 Nodejs API for antispam service [cleantalk.org](https://cleantalk.org). Invisible protection from spam, no captches, no puzzles, no animals and no math.
 
