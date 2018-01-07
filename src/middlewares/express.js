@@ -50,10 +50,19 @@ const cleantalkMiddleware = (auth_key, type, aliases, options) =>  {
 	const {server_url, language} = options;
 
 	assert(type, `Argument 'type' is required`);
-	assert.equal(ALLOWED_REQUEST_TYPES.includes(type), `Argument 'type' must be in allowed list: ${ALLOWED_REQUEST_TYPES.join(', ')}`);
-	const client = new Cleantalk({auth_key, server_url, language});
+	assert(ALLOWED_REQUEST_TYPES.includes(type), `Argument 'type' is '${ type }' and must be in allowed list: ${ALLOWED_REQUEST_TYPES.join(', ')}`);
 
 	return function cleantalk(request, res, next) {
+		auth_key = auth_key || request.app.get('cleantalk auth key');
+		request.cleantalkDecision = {};
+
+		if (!auth_key) {
+			console.error(new Error('Authentication key ($auth_key) must be defined.'))
+			return next();
+		}
+
+		const client = new Cleantalk({ auth_key, server_url, language });
+		
 		const method = type === 'message'
 			? 'isAllowMessage'
 			: 'isAllowUser';
@@ -62,7 +71,7 @@ const cleantalkMiddleware = (auth_key, type, aliases, options) =>  {
 
 		client[method](ctRequest)
 			.then(decision => {
-				request.spam = decision;
+				request.cleantalkDecision = decision;
 				next();
 			})
 			.catch(error => next(error));

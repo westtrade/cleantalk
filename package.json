@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "ava",
-	"update:docs": "jsdox --output ./docs ./src"
+    "update:docs": "jsdox --output ./docs ./src"
   },
   "author": "Popov Gennadiy <me@westtrade.tk>",
   "license": "MIT",
