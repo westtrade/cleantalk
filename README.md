@@ -40,6 +40,22 @@ npm install cleantalk
 <a name="examples"></a>
 # Examples
 
+## How to run examples
+
+**Clean HTTP**
+```sh
+npm run server:http
+```
+
+**Express server**
+```sh
+npm run server:express
+```
+
+**koa server**
+```sh
+npm run server:koa
+```
 
 
 <a name="todo"></a>

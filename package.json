@@ -9,6 +9,9 @@
   },
   "scripts": {
     "test": "ava",
+    "server:http": "node ./examples/http",
+    "server:express": "node ./examples/express",
+    "server:koa": "node ./examples/koa",
     "update:docs": "jsdox --output ./docs ./src"
   },
   "author": "Popov Gennadiy <me@westtrade.tk>",

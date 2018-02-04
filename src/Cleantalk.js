@@ -488,7 +488,6 @@ class Cleantalk {
 	 * @return {Promise} Promised result of request
 	 */
 	[requestMethod] (requestUrl, data) {
-
 		return new Promise((resolve, reject) => {
 
 			const info = url.parse(requestUrl);
