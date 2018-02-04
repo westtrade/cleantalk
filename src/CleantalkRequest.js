@@ -180,7 +180,6 @@ class CleantalkRequest {
 			let stream = request;
 
 			let encoding = (request.headers['content-encoding'] || '').toLowerCase();
-			console.log(encoding)
 
 			switch (encoding) {
 			case 'deflate':
@@ -215,6 +214,5 @@ class CleantalkRequest {
 		});
 	}
 }
-
 
 module.exports = CleantalkRequest;

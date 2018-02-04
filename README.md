@@ -18,20 +18,6 @@ Nodejs API for antispam service [cleantalk.org](https://cleantalk.org). Invisibl
 - [westtrade](https://github.com/westtrade)
 - [ChivPoint](https://github.com/ChivPoint)
 
-<a name="requirements"></a>
-# Requirements
-- node.js > 7.x.x
-- npm or yarn
-- node-gyp
-- python > 2.7 (3.x.x `not` supported)
-
-## install [node.js]( https://nodejs.org/en/download/)
-
-## install/update [npm]( https://nodejs.org/en/download/) or [yarn](https://yarnpkg.com/en/docs/install)
-```sh
-npm update npm -g
-```
-
 <a name="install"></a>
 # Install
 
@@ -50,6 +36,11 @@ npm install cleantalk
 
 <a name="api"></a>
 # API
+
+<a name="examples"></a>
+# Examples
+
+
 
 <a name="todo"></a>
 # TODO
